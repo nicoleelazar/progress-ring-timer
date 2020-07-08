@@ -1,0 +1,113 @@
+:root {
+    --font: Arial, Helvetica, sans-serif;
+    --c-feature: rgb(40, 228, 156);
+    --c-gray: rgb(80, 80, 80);
+    --c-gray-light: rgb(138, 138, 138);
+    --c-white: rgb(255, 255, 255);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.contain-app,
+.contain-clock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* set time buttons----------------------- */
+
+.btn-set {
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    background-color: var(--c-gray);
+    font-family: var(--font);
+    font-size: 30px;
+    padding: 3px 12px;
+    margin: 5px;
+    color: var(--c-white);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-set:hover {
+    background-color: var(--c-gray-light);
+}
+
+.setters {
+    margin-top: 10px;
+}
+
+.minutes-set {
+    float: left;
+    margin-right: 28px;
+}
+
+.seconds-set {
+    float: right;
+}
+
+/* Remaining Time -------------------------------------- */
+
+.contain-time {
+    position: absolute;
+    text-align: center;
+}
+
+.display-remain-time {
+    font-family: var(--font);
+    font-size: 65px;
+    color: var(--c-gray);
+}
+
+/* Play/Pause buttons ----------------------------------- */
+
+#pause {
+    outline: none;
+    background-color: var(--c-gray);
+    border: none;
+    border-radius: 30px;
+    margin-top: 10px;
+    width: 200px;
+    height: 50px;
+    color: var(--c-white);
+    text-transform: uppercase;
+    font-size: 20px;
+    position: relative;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+#pause:hover {
+    background-color: var(--c-gray-light);
+}
+
+/* Clock Face ------------------------------------------------- */
+.e-c-base {
+    fill: none;
+    stroke: var(--c-gray-light);
+    stroke-width: 10px;
+}
+
+.e-c-progress {
+    fill: none;
+    stroke: var(--c-feature);
+    stroke-width: 10px;
+    transition: stroke-dashoffset 0.7s;
+}
+
+/* .e-c-pointer {
+    fill: #fff;
+    stroke: #f7958e;
+    stroke-width: 2px;
+}
+
+#e-pointer {
+    transition: transform 0.7s;
+} */

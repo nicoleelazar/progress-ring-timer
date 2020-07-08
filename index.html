@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Timer Progress Ring</title>
+    </head>
+    <body>
+        <div class="contain-app">
+            <!-- Time set buttons -->
+            <div class="setters">
+                <div class="minutes-set">
+                    <button class="btn-set" data-setter="minutes-plus">
+                        +
+                    </button>
+                    <button class="btn-set" data-setter="minutes-minus">
+                        -
+                    </button>
+                </div>
+                <div class="seconds-set">
+                    <button class="btn-set" data-setter="seconds-plus">
+                        +
+                    </button>
+                    <button class="btn-set" data-setter="seconds-minus">
+                        -
+                    </button>
+                </div>
+            </div>
+
+            <!-- clock -->
+            <div class="contain-clock">
+                <div class="circle">
+                    <svg
+                        width="300"
+                        viewBox="0 0 220 220"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <g transform="translate(110,110)">
+                            <circle r="100" class="e-c-base" />
+                            <g transform="rotate(-90)">
+                                <circle r="100" class="e-c-progress" />
+                                <!-- <g id="e-pointer">
+                            <circle cx="100" cy="0" r="8" class="e-c-pointer" />
+                        </g> -->
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- Timer  -->
+                <div class="contain-time">
+                    <div class="display-remain-time">00:30</div>
+                </div>
+            </div>
+
+            <!-- play pause buttons -->
+            <div class="contain-start-stop">
+                <button class="play" id="pause">Start</button>
+            </div>
+        </div>
+    </body>
+</html>
