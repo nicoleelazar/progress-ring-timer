@@ -5,6 +5,7 @@ const length = Math.PI * 2 * 100;
 const displayOutput = document.querySelector(".display-remain-time");
 const pauseBtn = document.getElementById("pause");
 const startBtn = document.querySelector(".start-btn");
+const resetBtn = document.querySelector(".reset-btn");
 const setterBtns = document.querySelectorAll("button[data-setter]");
 
 let intervalTimer;
@@ -12,6 +13,7 @@ let timeLeft;
 let wholeTime = 0.5 * 60; // this sets default 30sec starting time
 let isPaused = false;
 let isPlaying = false;
+let isReset = false;
 
 // Update progress bar length ---------
 progressBar.style.strokeDasharray = length;
@@ -72,7 +74,7 @@ function displayTimeLeft(timeLeft) {
     update(timeLeft, wholeTime);
 }
 
-// updated Timer & display, every second ------------------------
+// calculate remaining time & display, every second ------------------------
 function timer(seconds) {
     let remainTime = Date.now() + seconds * 1000;
     displayTimeLeft(seconds);
@@ -123,3 +125,22 @@ function pausePlayTimer(event) {
 }
 
 startBtn.addEventListener("click", pausePlayTimer);
+
+function resetTimer() {
+    isPlaying = false;
+    isPaused = false;
+    clearInterval(intervalTimer);
+    wholeTime = 0.5 * 60;
+    update(wholeTime, wholeTime);
+    displayTimeLeft(wholeTime);
+
+    startBtn.textContent = "START";
+    progressBar.classList.remove("progress-end");
+
+    setterBtns.forEach(function (btn) {
+        btn.disabled = false;
+        btn.style.opacity = 1;
+    });
+}
+
+resetBtn.addEventListener("click", resetTimer);

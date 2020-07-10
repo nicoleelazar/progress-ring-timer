@@ -2,9 +2,12 @@
     --font: Arial, Helvetica, sans-serif;
     --c-feature: rgb(40, 228, 156);
     --c-warn: rgb(228, 84, 40);
+    --c-danger: rgb(148, 27, 27);
+    --c-danger-light: rgb(190, 54, 54);
     --c-gray: rgb(80, 80, 80);
     --c-gray-light: rgb(138, 138, 138);
     --c-white: rgb(255, 255, 255);
+    --c-black: rgb(0, 0, 0);
 }
 
 * {
@@ -69,7 +72,8 @@
 
 /* Play/Pause buttons ----------------------------------- */
 
-.start-btn {
+.start-btn,
+.reset-btn {
     outline: none;
     background-color: var(--c-gray);
     border: none;
@@ -85,8 +89,16 @@
     cursor: pointer;
 }
 
+.reset-btn {
+    background-color: var(--c-danger);
+}
+
 .start-btn:hover {
     background-color: var(--c-gray-light);
+}
+
+.reset-btn:hover {
+    background-color: var(--c-danger-light);
 }
 
 /* Clock Face ------------------------------------------------- */
