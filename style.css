@@ -1,6 +1,7 @@
 :root {
     --font: Arial, Helvetica, sans-serif;
     --c-feature: rgb(40, 228, 156);
+    --c-warn: rgb(228, 84, 40);
     --c-gray: rgb(80, 80, 80);
     --c-gray-light: rgb(138, 138, 138);
     --c-white: rgb(255, 255, 255);
@@ -68,7 +69,7 @@
 
 /* Play/Pause buttons ----------------------------------- */
 
-#pause {
+.start-btn {
     outline: none;
     background-color: var(--c-gray);
     border: none;
@@ -84,7 +85,7 @@
     cursor: pointer;
 }
 
-#pause:hover {
+.start-btn:hover {
     background-color: var(--c-gray-light);
 }
 
@@ -99,15 +100,10 @@
     fill: none;
     stroke: var(--c-feature);
     stroke-width: 10px;
-    transition: stroke-dashoffset 0.7s;
+    /* to make bar move smoothly and continuously */
+    transition: all 1s linear;
 }
 
-/* .e-c-pointer {
-    fill: #fff;
-    stroke: #f7958e;
-    stroke-width: 2px;
+.progress-end {
+    stroke: var(--c-warn);
 }
-
-#e-pointer {
-    transition: transform 0.7s;
-} */
