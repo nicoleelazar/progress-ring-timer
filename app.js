@@ -10,7 +10,8 @@ const setterBtns = document.querySelectorAll("button[data-setter]");
 
 let intervalTimer;
 let timeLeft;
-let wholeTime = 0.5 * 60; // this sets default 30sec starting time
+let originalTime = 5; // this sets default starting time (eg. 00:30)
+let wholeTime = originalTime;
 let isPaused = false;
 let isPlaying = false;
 let isReset = false;
@@ -35,22 +36,28 @@ function changeWholeTime(seconds) {
     }
 }
 
-// Allocate increments for minutes and seconds setting buttons & add it to display ----------
+// Allocate times for setter buttons -----------------
 for (let i = 0; i < setterBtns.length; i++) {
-    setterBtns[i].addEventListener("click", function (event) {
+    setterBtns[i].addEventListener("click", function () {
         let param = this.dataset.setter;
         switch (param) {
-            case "minutes-plus":
+            case "plus-20-min":
+                changeWholeTime(20 * 60);
+                break;
+            case "plus-5-min":
+                changeWholeTime(5 * 60);
+                break;
+            case "plus-1-min":
                 changeWholeTime(1 * 60);
                 break;
-            case "minutes-minus":
-                changeWholeTime(-1 * 60);
+            case "plus-30-sec":
+                changeWholeTime(30);
                 break;
-            case "seconds-plus":
-                changeWholeTime(1);
+            case "plus-20-sec":
+                changeWholeTime(20);
                 break;
-            case "seconds-minus":
-                changeWholeTime(-1);
+            case "plus-5-sec":
+                changeWholeTime(5);
                 break;
         }
         displayTimeLeft(wholeTime);
@@ -67,7 +74,7 @@ function displayTimeLeft(timeLeft) {
 
     displayOutput.textContent = displayString;
 
-    if (timeLeft < 5) {
+    if (timeLeft < 4) {
         progressBar.classList.add("progress-end");
     }
 
@@ -102,7 +109,7 @@ function timer(seconds) {
 }
 
 // Pause & Play Timer -----------------
-function pausePlayTimer(event) {
+function pausePlayTimer() {
     if (isPlaying === false) {
         timer(wholeTime);
         isPlaying = true;
@@ -112,6 +119,7 @@ function pausePlayTimer(event) {
         setterBtns.forEach(function (btn) {
             btn.disabled = true;
             btn.style.opacity = 0.5;
+            btn.style.cursor = "default";
         });
     } else if (isPaused) {
         startBtn.textContent = "PAUSE";
@@ -126,11 +134,12 @@ function pausePlayTimer(event) {
 
 startBtn.addEventListener("click", pausePlayTimer);
 
+// reset timer -----------------
 function resetTimer() {
     isPlaying = false;
     isPaused = false;
     clearInterval(intervalTimer);
-    wholeTime = 0.5 * 60;
+    wholeTime = originalTime;
     update(wholeTime, wholeTime);
     displayTimeLeft(wholeTime);
 
